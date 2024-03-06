@@ -1,0 +1,75 @@
+---
+import "../styles/style.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <title>M&D's Wedding</title>
+  </head>
+  <body>
+    <main>
+
+        <div class="homepage">
+
+
+   
+
+
+        <section class="homepage__hero">
+        <div class="homepage__hero__image">
+        <div class="media-wrapper media-wrapper--image is-loaded">
+        <div class="media-placeholder" style="padding-bottom: 72.862694300518%;">
+            <img alt="" class="lazy-image" src="./assets/bg.jpg" />
+        </div>
+    </div>
+    </div>
+        <div class="homepage__hero__content">
+        <div class="row">
+        <div class="column">
+        <div class="crest-lockup crest-lockup--large">
+        <h1>
+        <span>KINDLY SAVE THE DATE FOR THE WEDDING OF</span>
+        <strong>DIANA & MICK</strong>
+        <span>Saturday, the 10<sup>th</sup> of August 2024</span>
+        <span>Invitation to follow</span>
+        </h1>
+        </div>
+
+        </div>
+        </div>
+        </div>
+        </section>
+
+        <section class="rsvp_form">
+            <form
+                    action="https://formspree.io/f/xrgnlbyp"
+                    method="POST"
+                    >
+                    <label>
+                        Full name:
+                        <input type="text" name="fullName">
+                    </label>
+                    <label>
+                       Phone number:
+                        <input type="number" name="phoneNumber">
+                    </label>
+                    <label>
+                        Email:
+                         <input type="email" name="email">
+                     </label>
+                     <label>
+                        Dietary restrictions:
+                        <textarea name="message"></textarea>
+                     </label>
+                    <!-- your other form fields go here -->
+                    <button type="submit">Send</button>
+        </form>
+        </section>
+        </div>
+        </main>
+  </body>
+</html>

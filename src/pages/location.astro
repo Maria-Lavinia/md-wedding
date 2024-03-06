@@ -1,0 +1,33 @@
+---
+import "../styles/style.css";
+import Footer from '../../src/components/Footer.astro'
+
+import { ViewTransitions } from 'astro:transitions';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <ViewTransitions />
+    <title>M&D's Wedding</title>
+  </head>
+<style>
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    
+}
+</style>
+  <body>
+    
+    <main transition:animate="slide" class="justify-center">
+            <h1>WEDDING LOCATION</h1>
+
+        </main>
+        <Footer/>
+        </body>
+        </html>

@@ -65,20 +65,28 @@ import "../styles/style.css";
                     <h2>RSVP</h2>
                     <label>
                         Full name:
-                        <input type="text" name="fullName">
+                        <input type="text" name="fullName" required>
                     </label>
                     <label>
                        Phone number:
-                        <input type="number" name="phoneNumber">
+                        <input type="tel" name="phoneNumber" required>
                     </label>
                     <label>
                         Email:
-                         <input type="email" name="email">
+                         <input type="email" name="email" required>
                      </label>
                      <label>
                         Dietary restrictions:
-                        <textarea name="message"></textarea>
+                        <textarea name="message" required></textarea>
                      </label>
+                     <label for="plus">Nr. of guests accompanying you:</label>
+                     <select name="plus" id="plus" required="">
+                         <option value="0" selected="">0</option>
+                         <option value="1">1</option>
+                         <option value="2">2</option>
+                         <option value="3">3</option>
+                         <option value="4">4</option>
+                     </select>
                     <!-- your other form fields go here -->
                     <button type="submit">Send</button>
         </form>

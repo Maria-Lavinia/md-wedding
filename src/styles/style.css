@@ -3647,8 +3647,9 @@ form {
 input[type="email"],
 input[type="text"],
 input[type="message"],
-input[type="number"],
-textarea {
+input[type="tel"],
+textarea,
+select {
   color: #333333;
   border: none;
   padding: 0.3125rem 0;

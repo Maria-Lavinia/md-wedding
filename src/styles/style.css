@@ -3594,6 +3594,12 @@ button {
     position: absolute;
     top: 85%;
 }
+
+@media (max-width: 768px) {
+    .arrow-down {
+        top: 75%;
+    }
+}
 .pulse{
     animation: pulse 1s infinite;
 }

@@ -1,5 +1,8 @@
 ---
 import "../styles/style.css";
+import Footer from '../../src/components/Footer.astro'
+
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <html lang="en">
@@ -8,11 +11,13 @@ import "../styles/style.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
+    <ViewTransitions />
     <title>M&D's Wedding</title>
   </head>
 
   <body>
-    <main>
+    
+    <main transition:animate="slide">
 
         <div class="homepage">
 
@@ -65,25 +70,80 @@ import "../styles/style.css";
                     <h2>RSVP</h2>
                     <label>
                         Full name:
-                        <input type="text" name="fullName">
+                        <input type="text" name="fullName" required>
                     </label>
                     <label>
                        Phone number:
-                        <input type="number" name="phoneNumber">
+                        <input type="tel" name="phoneNumber" required>
                     </label>
                     <label>
                         Email:
-                         <input type="email" name="email">
+                         <input type="email" name="email" required>
                      </label>
                      <label>
                         Dietary restrictions:
-                        <textarea name="message"></textarea>
+                        <textarea name="dietRestict" required></textarea>
                      </label>
+                     <label for="plus">Nr. of guests accompanying you:</label>
+                     <select name="plus" id="plus"  onchange="showPopup()" required="">
+                         <option value="0" selected="">0</option>
+                         <option value="1">1</option>
+                         <option value="2">2</option>
+                         <option value="3">3</option>
+                         <option value="4">4</option>
+                     </select>
+
+                      <!-- Popup div -->
+            <div id="modal-overlay" class="overlay" onclick="hidePopup()"></div>
+            <div id="popup" class="popup">
+               
+                <h3>Additional Information</h3>
+                <!-- Add additional form fields for guests -->
+                <label>
+                  Guest Name(s):
+                  <input type="text" name="guestName" required>
+                  <p style="font-size: .5rem; color: grey"><i>Separate names of guests using a comma.</i></p>
+                </label>
+                <label>
+                    Dietary restrictions:
+                    <textarea name="guestDietRestict" required></textarea>
+                 </label>
+  
+                <button type="button" onclick="hidePopup()">Close</button>
+              </div>
+         
                     <!-- your other form fields go here -->
-                    <button type="submit">Send</button>
+                <button type="submit">Send</button>
         </form>
         </section>
         </div>
+   
         </main>
+        <Footer/>
+        
   </body>
+  <script is:inline>
+    function showPopup() {
+      const overlay = document.getElementById("modal-overlay");
+      const guestsSelect = document.getElementById("plus");
+      const popup = document.getElementById("popup");
+
+      if (guestsSelect.value > 0) {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+      } else {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+      }
+    }
+
+    function hidePopup() {
+      const overlay = document.getElementById("modal-overlay");
+      const popup = document.getElementById("popup");
+
+      overlay.style.display = "none";
+      popup.style.display = "none";
+    }
+  </script>
+
 </html>

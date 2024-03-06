@@ -10,6 +10,7 @@ import "../styles/style.css";
     <meta name="generator" content={Astro.generator} >
     <title>M&D's Wedding</title>
   </head>
+
   <body>
     <main>
 
@@ -24,7 +25,11 @@ import "../styles/style.css";
         <div class="media-wrapper media-wrapper--image is-loaded">
         <div class="media-placeholder" style="padding-bottom: 72.862694300518%;">
             <img alt="" class="lazy-image" src="./assets/bg.jpg" />
+
+         
         </div>
+  
+      
     </div>
     </div>
         <div class="homepage__hero__content">
@@ -36,19 +41,28 @@ import "../styles/style.css";
         <strong>DIANA & MICK</strong>
         <span>Saturday, the 10<sup>th</sup> of August 2024</span>
         <span>Invitation to follow</span>
-        </h1>
+        </h1> 
         </div>
+
+
+        <div class="arrow-down pulse">
+            <a href="#form">
+            <img alt="" class="lazy-image" src="./assets/arrow-down.svg"/>
+        </a>
+        </div>
+
 
         </div>
         </div>
         </div>
         </section>
 
-        <section class="rsvp_form">
+        <section id="form" class="rsvp_form">
             <form
                     action="https://formspree.io/f/xrgnlbyp"
                     method="POST"
                     >
+                    <h2>RSVP</h2>
                     <label>
                         Full name:
                         <input type="text" name="fullName">

@@ -1241,3 +1241,12 @@ button {
     padding-top: 1rem !important;
     margin-bottom: 3rem !important;
 }
+
+section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow:hidden;
+  }

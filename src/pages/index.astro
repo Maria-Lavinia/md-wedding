@@ -2,7 +2,7 @@
 import "../styles/style.css";
 import Footer from '../../src/components/Footer.astro'
 
-// import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <html lang="en">
@@ -11,13 +11,13 @@ import Footer from '../../src/components/Footer.astro'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
-    <!-- <ViewTransitions /> -->
+    <ViewTransitions />
     <title>M&D's Wedding</title>
   </head>
 
   <body>
     
-    <main>
+    <main transition:animate="slide">
 
         <div class="homepage">
 

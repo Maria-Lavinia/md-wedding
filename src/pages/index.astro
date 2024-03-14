@@ -58,60 +58,7 @@ import Footer from '../../src/components/Footer.astro'
         </div>
         </section>
 
-        <section id="form" class="rsvp_form">
-            <form
-                    action="https://formspree.io/f/xrgnlbyp"
-                    method="POST"
-                    >
-                    <h2>RSVP</h2>
-                    <label>
-                        Full name:
-                        <input type="text" name="fullName" required>
-                    </label>
-                    <label>
-                       Phone number:
-                        <input type="tel" name="phoneNumber" required>
-                    </label>
-                    <label>
-                        Email:
-                         <input type="email" name="email" required>
-                     </label>
-                     <label>
-                        Dietary restrictions:
-                        <textarea name="dietRestict" required></textarea>
-                     </label>
-                     <label for="plus">Nr. of guests accompanying you:</label>
-                     <select name="plus" id="plus"  onchange="showPopup()" required="">
-                         <option value="0" selected="">0</option>
-                         <option value="1">1</option>
-                         <option value="2">2</option>
-                         <option value="3">3</option>
-                         <option value="4">4</option>
-                     </select>
-
-                      <!-- Popup div -->
-            <div id="modal-overlay" class="overlay" onclick="hidePopup()"></div>
-            <div id="popup" class="popup">
-               
-                <h3>Additional Information</h3>
-                <!-- Add additional form fields for guests -->
-                <label>
-                  Guest Name(s):
-                  <input type="text" name="guestName" required>
-                  <p style="font-size: .5rem; color: grey"><i>Separate names of guests using a comma.</i></p>
-                </label>
-                <label>
-                    Dietary restrictions:
-                    <textarea name="guestDietRestict" required></textarea>
-                 </label>
   
-                <button type="button" onclick="hidePopup()">Close</button>
-              </div>
-         
-                    <!-- your other form fields go here -->
-                <button type="submit">Send</button>
-        </form>
-        </section>
         </div>
    
         </main>
@@ -141,5 +88,11 @@ import Footer from '../../src/components/Footer.astro'
       popup.style.display = "none";
     }
   </script>
+  <script is:inline>
+    var _iub = _iub || [];
+    _iub.csConfiguration = {"askConsentAtCookiePolicyUpdate":true,"floatingPreferencesButtonDisplay":"bottom-right","lang":"en","perPurposeConsent":true,"siteId":3553681,"whitelabel":false,"cookiePolicyId":71805031, "banner":{ "acceptButtonDisplay":true,"backgroundOverlay":true,"closeButtonDisplay":false,"customizeButtonDisplay":true,"explicitWithdrawal":true,"position":"bottom","rejectButtonDisplay":true,"showPurposesToggles":true,"showTitle":false }};
+    </script>
+    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3553681.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 
 </html>

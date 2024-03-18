@@ -1,8 +1,18 @@
 ---
-import "../styles/style.css";
-import Footer from '../../src/components/Footer.astro'
-
+import "../../styles/style.css";
+import Footer from '../../components/Footer.astro'
+import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
+
+
+export async function getStaticPaths() {
+  const languageEntries = await getCollection("languages");
+  return languageEntries.map(i => ({ params: { language: i.slug } }));
+}
+
+const languageCollection = await getCollection("languages");
+const { language } = Astro.params;
+const selectedLanguage = languageCollection.find((lang) => lang.slug === language);
 ---
 <html lang="en">
   <head>
@@ -51,18 +61,13 @@ iframe {
   <body>
     
     <main transition:animate="slide" class="justify-center">
-            <h1>WEDDING LOCATION</h1>
-<div class="address">
-  <p><strong>Address:</strong></p>
-  <p>Hovedgaden 16 and 31A, Femmøller Strand,
-  </br> 8400 Ebeltoft</p>
-</div>
-<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2217.814264557325!2d10.599422794999597!3d56.22944528624797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464c33da8dc95f0b%3A0x2368a3cf44f96b6a!2sHovedgaden%2016%2C%208400%20Ebeltoft!5e0!3m2!1sen!2sdk!4v1709751340675!5m2!1sen!2sdk" 
-    width="500" height="450" style="border:0;"
-    allowfullscreen="" loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-</iframe> -->
+            <h1>{selectedLanguage?.data.location}</h1>
+    <div class="address">
+      <p><strong>{selectedLanguage?.data.address}</strong></p>
+      <p>Hovedgaden 16 and 31A, Femmøller Strand,
+      </br> 8400 Ebeltoft</p>
+    </div>
         </main>
-        <Footer/>
+      <Footer/>
         </body>
         </html>

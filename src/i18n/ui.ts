@@ -1,6 +1,6 @@
 export const languages = {
     en: 'English',
-    ro: 'Romanian',
+    ro: 'Română',
   };
   
   export const defaultLang = 'en';

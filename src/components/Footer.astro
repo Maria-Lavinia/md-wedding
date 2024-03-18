@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguagePicker from '../components/LanguagePicker.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -8,8 +9,8 @@ let currentDate = new Date();
 let currentYear = currentDate.getFullYear();
 ---
 
-	<footer id="form" >
-		{
+	<footer id="form">
+		
 		
 						<ul>
 						    <li>
@@ -36,34 +37,10 @@ let currentYear = currentDate.getFullYear();
 								</li>
 					
 						</ul>
-
-
-						<ul class="menu flex-row">
-					<li>
-						<select
-							id="language-select"
-							style="border: none; text-align: center; color: #8C8C8C"
-							onchange="handleLanguageChange(this)"
-						>
-							<option value="" disabled selected>Choose language</option>
-							<option value="/en/">English</option>
-							<option value="/ro/">Romanian</option>
-						</select>
-					</li>
-					</ul>
-
 						<p>&#169;{currentYear}. All rights reserved.</p>
+						<LanguagePicker/>
 			
-			
-		}
 	</footer>
-	<script is:inline>
-function handleLanguageChange(selectElement) {
-        setTimeout(() => {
-            location = selectElement.value;
-        }, 500);
-    }
-	</script>
 <style>
 	footer {
 		background-color: #4c4c4b;

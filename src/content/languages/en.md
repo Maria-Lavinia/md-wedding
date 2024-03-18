@@ -15,8 +15,10 @@ saveTheDate: KINDLY SAVE THE DATE FOR THE WEDDING OF
 newlyWeds: DIANA & MICK
 date: SATURDAY, THE 10th OF AUGUST 2024
 invitation: INVITATION TO FOLLOW
+
 contactInfo: If you have any issues, don't hesitate to
 contactHealine: CONTACT US
+
 location: WEDDING LOCATION
 address: Address
 ---

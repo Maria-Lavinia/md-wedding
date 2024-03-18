@@ -1,8 +1,19 @@
 ---
-import "../styles/style.css";
-import Footer from '../../src/components/Footer.astro'
-
+import "../../styles/style.css";
+import Footer from '../../components/Footer.astro'
+import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
+
+
+
+export async function getStaticPaths() {
+  const languageEntries = await getCollection("languages");
+  return languageEntries.map(i => ({ params: { language: i.slug } }));
+}
+
+const languageCollection = await getCollection("languages");
+const { language } = Astro.params;
+const selectedLanguage = languageCollection.find((lang) => lang.slug === language);
 ---
 <html lang="en">
   <head>
@@ -41,23 +52,23 @@ import { ViewTransitions } from 'astro:transitions';
   <body>
     
     <main transition:animate="slide" class="justify-center">
-        <p>If you have any issues, don't hesitate to</p>
-            <h1>Contact us</h1>
+        <p>{selectedLanguage?.data.contactInfo}</p>
+            <h1>{selectedLanguage?.data.contactHealine}</h1>
     <div class="contact-persons">
         <div class="wife">
             <h2><b>DIANA</b></h2>
    
                 <a target="_blank" href="https://www.facebook.com/otelea.diana">Facebook</a>
-                <a href="tel:+4591638056">Phone number</a>
+                <a href="tel:+4591638056">{selectedLanguage?.data.phoneNumber}</a>
     </div>
 
     <div class="husband">
             <h2><b>MICK</b></h2>
                 <a target="_blank" href="https://www.facebook.com/mick.pedersen">Facebook</a>
-                <a href="">Phone number</a>
+                <a href="">{selectedLanguage?.data.phoneNumber}</a>
     </div>
     </div>
     </main>
-    <Footer/>
+  <Footer/>
     </body>
     </html>

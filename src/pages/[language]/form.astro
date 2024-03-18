@@ -1,8 +1,19 @@
 ---
-import "../styles/style.css";
-import Footer from '../../src/components/Footer.astro'
-
+import "../../styles/style.css";
+import Footer from '../../components/Footer.astro'
+import { getCollection } from "astro:content";
 import { ViewTransitions } from 'astro:transitions';
+
+
+
+export async function getStaticPaths() {
+  const languageEntries = await getCollection("languages");
+  return languageEntries.map(i => ({ params: { language: i.slug } }));
+}
+
+const languageCollection = await getCollection("languages");
+const { language } = Astro.params;
+const selectedLanguage = languageCollection.find((lang) => lang.slug === language);
 ---
 
 <html lang="en">
@@ -28,22 +39,22 @@ import { ViewTransitions } from 'astro:transitions';
                     >
                     <h2>RSVP</h2>
                     <label>
-                        Full name:
+                      {selectedLanguage?.data.fullName}
                         <input type="text" name="fullName" required>
                     </label>
                     <label>
-                       Phone number:
+                      {selectedLanguage?.data.phoneNumber}
                         <input type="tel" name="phoneNumber" required>
                     </label>
                     <label>
-                        Email:
+                      {selectedLanguage?.data.email}
                          <input type="email" name="email" required>
                      </label>
                      <label>
-                        Dietary restrictions:
+                      {selectedLanguage?.data.diet}
                         <textarea name="dietRestict" required></textarea>
                      </label>
-                     <label for="plus">Nr. of guests accompanying you:</label>
+                     <label for="plus">{selectedLanguage?.data.guests}</label>
                      <select name="plus" id="plus"  onchange="showPopup()" required="">
                          <option value="0" selected="">0</option>
                          <option value="1">1</option>
@@ -56,23 +67,23 @@ import { ViewTransitions } from 'astro:transitions';
             <div id="modal-overlay" class="overlay" onclick="hidePopup()"></div>
             <div id="popup" class="popup">
                
-                <h3>Additional Information</h3>
+                <h3>{selectedLanguage?.data.additionalInfo}</h3>
                 <!-- Add additional form fields for guests -->
                 <label>
-                  Guest Name(s):
+                  {selectedLanguage?.data.guestName}
                   <input type="text" name="guestName" required>
                   <p style="font-size: .5rem; color: grey"><i>Separate names of guests using a comma.</i></p>
                 </label>
                 <label>
-                    Dietary restrictions:
+                  {selectedLanguage?.data.guestDiet}
                     <textarea name="guestDietRestict" required></textarea>
                  </label>
   
-                <button type="button" onclick="hidePopup()">Close</button>
+                <button type="button" onclick="hidePopup()">{selectedLanguage?.data.closeBtn}</button>
               </div>
          
                     <!-- your other form fields go here -->
-                <button type="submit">Send</button>
+                <button type="submit">{selectedLanguage?.data.submitBtn}</button>
         </form>
         </section>
         </div>
@@ -104,11 +115,4 @@ import { ViewTransitions } from 'astro:transitions';
       popup.style.display = "none";
     }
   </script>
-  <script is:inline>
-    var _iub = _iub || [];
-    _iub.csConfiguration = {"askConsentAtCookiePolicyUpdate":true,"floatingPreferencesButtonDisplay":"bottom-right","lang":"en","perPurposeConsent":true,"siteId":3553681,"whitelabel":false,"cookiePolicyId":71805031, "banner":{ "acceptButtonDisplay":true,"backgroundOverlay":true,"closeButtonDisplay":false,"customizeButtonDisplay":true,"explicitWithdrawal":true,"position":"bottom","rejectButtonDisplay":true,"showPurposesToggles":true,"showTitle":false }};
-    </script>
-    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3553681.js"></script>
-    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
-
 </html>

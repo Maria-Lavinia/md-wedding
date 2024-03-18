@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../../components/Footer.astro'
+import "../../styles/style.css";
+
+export async function getStaticPaths() {
+  const langEntries = await getCollection('languages');
+  return langEntries.map(entry => ({
+    params: { language: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <ViewTransitions />
+    <title>M&D's Wedding</title>
+  </head>
+
+  <body>
+    
+    <main transition:animate="slide">
+
+        <div class="homepage">
+
+        <section class="homepage__hero">
+        <div class="homepage__hero__image">
+        <div class="media-wrapper media-wrapper--image is-loaded">
+        <div class="media-placeholder" style="padding-bottom: 72.862694300518%;">
+            <img alt="" class="lazy-image" src=".../../.././assets/bg.jpg" />
+
+         
+        </div>
+  
+      
+    </div>
+    </div>
+        <div class="homepage__hero__content">
+        <div class="row">
+        <div class="column">
+        <div class="crest-lockup crest-lockup--large">
+        <h1>
+        <span>{entry?.data.saveTheDate}</span>
+        <strong>{entry?.data.newlyWeds}</strong>
+        <span>{entry?.data.date}</span>
+        <span>{entry?.data.invitation}</span>
+        </h1> 
+        </div>
+
+
+        <div class="arrow-down pulse">
+            <a href="#form">
+            <img alt="" class="lazy-image" src="../../.././assets/arrow-down.svg"/>
+        </a>
+        </div>
+
+
+        </div>
+        </div>
+        </div>
+        </section>
+
+  
+        </div>
+   
+        </main>
+        <Footer/>
+        
+  </body>
+ 
+  <script is:inline>
+    var _iub = _iub || [];
+    _iub.csConfiguration = {"askConsentAtCookiePolicyUpdate":true,"floatingPreferencesButtonDisplay":"bottom-right","lang":"en","perPurposeConsent":true,"siteId":3553681,"whitelabel":false,"cookiePolicyId":71805031, "banner":{ "acceptButtonDisplay":true,"backgroundOverlay":true,"closeButtonDisplay":false,"customizeButtonDisplay":true,"explicitWithdrawal":true,"position":"bottom","rejectButtonDisplay":true,"showPurposesToggles":true,"showTitle":false }};
+    </script>
+    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3553681.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
+</html>

@@ -14,7 +14,7 @@ const languageCollection = await getCollection("languages");
 const { language } = Astro.params;
 const selectedLanguage = languageCollection.find((lang) => lang.slug === language);
 ---
-<html lang="en">
+<html lang={selectedLanguage?.data.iso}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

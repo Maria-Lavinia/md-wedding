@@ -13,7 +13,7 @@ export const languages = {
       'footer.home': 'Home'
     },
     ro: {
-        'footer.form': 'RSVP',
+        'footer.form': 'Confirmare',
         'footer.contact': 'Contact',
         'footer.location': 'Locație',
         'footer.home': 'Acasǎ'

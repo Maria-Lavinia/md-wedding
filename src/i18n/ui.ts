@@ -15,7 +15,7 @@ export const languages = {
     ro: {
         'footer.form': 'RSVP',
         'footer.contact': 'Contact',
-        'footer.location': 'Locatie',
-        'footer.home': 'Home'
+        'footer.location': 'Locație',
+        'footer.home': 'Acasǎ'
     },
   } as const;

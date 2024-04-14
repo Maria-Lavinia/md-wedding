@@ -21,4 +21,6 @@ contactHealine: CONTACTATI
 
 location: LOCATIA NUNTII
 address: Adresa
+
+schedule: PROGRAM
 ---

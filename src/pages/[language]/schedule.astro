@@ -1,0 +1,69 @@
+---
+import "../../styles/style.css";
+import Footer from '../../components/Footer.astro'
+import { getCollection } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
+
+
+export async function getStaticPaths() {
+  const languageEntries = await getCollection("languages");
+  return languageEntries.map(i => ({ params: { language: i.slug } }));
+}
+
+const languageCollection = await getCollection("languages");
+const { language } = Astro.params;
+const selectedLanguage = languageCollection.find((lang) => lang.slug === language);
+---
+<html lang={selectedLanguage?.data.iso}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <ViewTransitions />
+    <title>Schedule</title>
+  </head>
+  <style>
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    
+    
+        
+}
+
+.address{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-block-start: 3rem;
+    gap: 1rem;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+iframe {
+  margin-block: 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  h1{
+    margin-block-start: 1rem;
+  }
+  iframe {
+    width: 250px !important;
+  }
+}
+</style>
+  <body>
+    
+    <main transition:animate="slide" class="justify-center">
+            <h1>{selectedLanguage?.data.schedule}</h1>
+   
+        </main>
+      <Footer/>
+        </body>
+        </html>

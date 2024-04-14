@@ -1,5 +1,6 @@
 // 1. Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
+
 // 2. Define your collection(s)
 const languagesCollection = defineCollection({
   schema: z.object({
@@ -22,7 +23,8 @@ const languagesCollection = defineCollection({
     contactInfo:  z.string(),
     contactHealine:  z.string(),
     location:  z.string(),
-    address:  z.string()
+    address:  z.string(),
+    schedule: z.string(),
   })
 });
 

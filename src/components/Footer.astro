@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import LanguagePicker from '../components/LanguagePicker.astro';
+
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,20 +12,23 @@ let currentYear = currentDate.getFullYear();
 	<footer id="form">
 						<ul>
 						    <li>
-								<a href={`/${lang}/form/`}>
+								<a href={`/${lang}/form?fullName=Jane Doe`}>
          		 					{t('footer.form')}
        							</a>
 							</li>
 								<li>
-									<a href={`/${lang}/contact/`}>
-          								{t('footer.contact')}
+									<a href={`/${lang}/schedule/`}>
+          								{t('footer.schedule')}
        								</a>
 								</li>
-
-
 								<li>
 									<a href={`/${lang}/location/`}>
           								{t('footer.location')}
+       								</a>
+								</li>
+								<li>
+									<a href="" target="_blank">
+          								{t('footer.registry')}
        								</a>
 								</li>
 	                            <li>
@@ -36,7 +39,7 @@ let currentYear = currentDate.getFullYear();
 					
 						</ul>
 						<p>&#169;{currentYear}. All rights reserved.</p>
-						<LanguagePicker/>
+			
 			
 	</footer>
 <style>

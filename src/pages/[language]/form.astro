@@ -40,7 +40,7 @@ const selectedLanguage = languageCollection.find((lang) => lang.slug === languag
                     <h2>RSVP</h2>
                     <label>
                       {selectedLanguage?.data.fullName}
-                        <input type="text" name="fullName" required>
+                        <input type="text" name="fullName"  required>
                     </label>
                     <label>
                       {selectedLanguage?.data.phoneNumber}
@@ -50,10 +50,10 @@ const selectedLanguage = languageCollection.find((lang) => lang.slug === languag
                       {selectedLanguage?.data.email}
                          <input type="email" name="email" required>
                      </label>
-                     <label>
+                     <!-- <label>
                       {selectedLanguage?.data.diet}
                         <textarea name="dietRestict" required></textarea>
-                     </label>
+                     </label> -->
                      <label for="plus">{selectedLanguage?.data.guests}</label>
                      <select name="plus" id="plus"  onchange="showPopup()" required="">
                          <option value="0" selected="">0</option>
@@ -93,6 +93,24 @@ const selectedLanguage = languageCollection.find((lang) => lang.slug === languag
         
   </body>
   <script is:inline>
+
+  function getUrlParameter(name) {
+    name = name.replace(/[\[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    const results = regex.exec(window.location.href);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  // Get the fullName parameter from the URL
+  const fullNameParam = getUrlParameter('fullName');
+
+  // Set the value of the fullName input field
+  const fullNameInput = document.querySelector('input[name="fullName"]');
+  if (fullNameInput && fullNameParam) {
+    fullNameInput.value = fullNameParam;
+  }
     function showPopup() {
       const overlay = document.getElementById("modal-overlay");
       const guestsSelect = document.getElementById("plus");
@@ -114,5 +132,11 @@ const selectedLanguage = languageCollection.find((lang) => lang.slug === languag
       overlay.style.display = "none";
       popup.style.display = "none";
     }
+
+
   </script>
+
+
+
+ 
 </html>

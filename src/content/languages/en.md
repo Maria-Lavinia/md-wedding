@@ -21,4 +21,6 @@ contactHealine: CONTACT US
 
 location: WEDDING LOCATION
 address: Address
+
+schedule: SCHEDULE
 ---

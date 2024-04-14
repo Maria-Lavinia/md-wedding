@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 // import { ViewTransitions } from 'astro:transitions';
 import Footer from '../../components/Footer.astro'
 import "../../styles/style.css";
+import Navigation from '../../components/Navigation.astro';
 
 export async function getStaticPaths() {
   const langEntries = await getCollection('languages');
@@ -27,7 +28,7 @@ const { entry } = Astro.props;
   <body>
     
     <main>
-
+      <Navigation/>
         <div class="homepage">
 
         <section class="homepage__hero">
@@ -75,6 +76,7 @@ const { entry } = Astro.props;
         
   </body>
  
+  
   <!-- <script is:inline>
     var _iub = _iub || [];
     _iub.csConfiguration = {"askConsentAtCookiePolicyUpdate":true,"floatingPreferencesButtonDisplay":"bottom-right","lang":"en","perPurposeConsent":true,"siteId":3553681,"whitelabel":false,"cookiePolicyId":71805031, "banner":{ "acceptButtonDisplay":true,"backgroundOverlay":true,"closeButtonDisplay":false,"customizeButtonDisplay":true,"explicitWithdrawal":true,"position":"bottom","rejectButtonDisplay":true,"showPurposesToggles":true,"showTitle":false }};

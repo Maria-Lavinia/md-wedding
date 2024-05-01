@@ -29,63 +29,92 @@ const selectedLanguage = languageCollection.find((lang) => lang.slug === languag
   <body>
     
     <main transition:animate="slide">
+      <!-- <div data-tf-live="01HWTNTBFJ2JMXP7BY172GTXAD"></div> -->
 
-        <div class="homepage">
+
+        <!-- <div class="homepage"> -->
 
         <section id="form" class="rsvp_form">
-            <form
+      
+            <form 
                     action="https://formspree.io/f/xrgnlbyp"
                     method="POST"
                     >
                     <h2>RSVP</h2>
+                    <!-- <h3 id="full"></h3> -->
                     <label>
-                      {selectedLanguage?.data.fullName}
-                        <input type="text" name="fullName"  required>
+                      {selectedLanguage?.data.fullName}:
+                        <input type="text" name="fullName" required>
                     </label>
                     <label>
-                      {selectedLanguage?.data.phoneNumber}
-                        <input type="tel" name="phoneNumber" required>
+                      {selectedLanguage?.data.email}:
+                        <input type="text" name="email">
                     </label>
-                    <label>
-                      {selectedLanguage?.data.email}
-                         <input type="email" name="email" required>
-                     </label>
-                     <!-- <label>
-                      {selectedLanguage?.data.diet}
-                        <textarea name="dietRestict" required></textarea>
-                     </label> -->
-                     <!-- <label for="plus">{selectedLanguage?.data.guests}</label>
-                     <select name="plus" id="plus"  onchange="showPopup()" required="">
-                         <option value="0" selected="">0</option>
-                         <option value="1">1</option>
-                         <option value="2">2</option>
-                         <option value="3">3</option>
-                         <option value="4">4</option>
-                     </select> -->
+                    <!-- <p>We are looking forward to celebrating with you!</p> -->
+                    <label>Will you be able to join us on the 10th of August? </label>
 
-                      <!-- Popup div -->
-            <div id="modal-overlay" class="overlay" onclick="hidePopup()"></div>
+                    <div class="flex">
+                      <label class="reverse" onchange="showPopup2()">
+                        <input id="yes" type="radio" name="attending" value="yes" /> Yes
+                      </label>
+                      <label class="reverse" onchange="showPopup()">
+                        <input id="no" type="radio" name="declining" value="no" /> Sorry
+                      </label>
+                    </div>
+       
+            <!-- <div id="modal-overlay" class="overlay" onclick="hidePopup()"></div>
             <div id="popup" class="popup">
                
-                <h3>{selectedLanguage?.data.additionalInfo}</h3>
-                <!-- Add additional form fields for guests -->
-                <label>
-                  {selectedLanguage?.data.guestName}
-                  <input type="text" name="guestName" required>
-                  <p style="font-size: .5rem; color: grey"><i>Separate names of guests using a comma.</i></p>
-                </label>
-                <label>
-                  {selectedLanguage?.data.guestDiet}
-                    <textarea name="guestDietRestict" required></textarea>
-                 </label>
-  
-                <button type="button" onclick="hidePopup()">{selectedLanguage?.data.closeBtn}</button>
+              <button type="button" onclick="hidePopup()" class="close">{selectedLanguage?.data.closeBtn}</button>
+
+
+                <h1></h1>
+                <p>We're sorry to hear you can't make it!</p>
+                <p>
+                If, by any chance your plans will change, and you can attend, please let us know before 5th July by phone at 31322826 (Mick) or 25288758 (Diana).</p>
+   
+
               </div>
          
-                    <!-- your other form fields go here -->
-                <button type="submit">{selectedLanguage?.data.submitBtn}</button>
+
+              <div id="modal-overlay2" class="overlay" onclick="hidePopup2()"></div>
+              <div id="popup2" class="popup">
+                <button type="button" onclick="hidePopup2()" class="close">{selectedLanguage?.data.closeBtn}</button>
+  
+  
+  
+                <label for="persons">{selectedLanguage?.data.guests}</label>
+                <select name="persons" id="plus"   required="">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                </select>
+                
+              
+                </div>
+  
+        
+                <button type="submit">{selectedLanguage?.data.submitBtn}</button> -->
+
+
+
+                  <!-- This div contains the "how many" input -->
+          <div id="guestsInput" style="display: none;">
+            <label for="persons">{selectedLanguage?.data.guests}</label>
+            <select name="persons" id="plus" required="">
+              <option value="1" >1</option>
+              <option value="2" selected>2</option>
+            </select>
+          </div>
+
+          <!-- This div contains the "sorry" message -->
+          <div id="sorryMessage" style="display: none;">
+            <p>We're sorry to hear you can't make it!</p>
+            <p>If, by any chance your plans will change, and you can attend, please let us know before 5th July by phone at 31322826 (Mick) or 25288758 (Diana).</p>
+          </div>
+
+          <button type="submit">{selectedLanguage?.data.submitBtn}</button>
         </form>
-        </section>
+         </section> 
         </div>
    
         </main>
@@ -108,35 +137,107 @@ const selectedLanguage = languageCollection.find((lang) => lang.slug === languag
 
   // Set the value of the fullName input field
   const fullNameInput = document.querySelector('input[name="fullName"]');
+  const h2 = document.querySelector("#full")
   if (fullNameInput && fullNameParam) {
     fullNameInput.value = fullNameParam;
+
+
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+  const yesRadio = document.getElementById("yes");
+  const noRadio = document.getElementById("no");
+
+  if (!yesRadio.checked && !noRadio.checked) {
+    event.preventDefault(); // Prevent form submission
+    alert("Please select either 'Yes' or 'Sorry'.");
   }
-    function showPopup() {
-      const overlay = document.getElementById("modal-overlay");
-      const guestsSelect = document.getElementById("plus");
-      const popup = document.getElementById("popup");
+});
 
-      if (guestsSelect.value > 0) {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-      } else {
-        overlay.style.display = "none";
-        popup.style.display = "none";
-      }
+
+    // h2.innerHTML = "Dear " + fullNameParam + ","
+  }
+
+//     function showPopup() {
+  
+
+
+
+//       const overlay = document.getElementById("modal-overlay");
+//       const guestsSelect = document.getElementById("no");
+//       console.log(guestsSelect)
+//       const popup = document.getElementById("popup");
+
+//       if (guestsSelect.value === "no") {
+//         overlay.style.display = "block";
+//         popup.style.display = "block";
+//       } else {
+//         overlay.style.display = "none";
+//         popup.style.display = "none";
+//       }
+//     }
+
+//     function hidePopup() {
+//       const overlay = document.getElementById("modal-overlay");
+//       const popup = document.getElementById("popup");
+
+//       overlay.style.display = "none";
+//       popup.style.display = "none";
+//     }
+
+
+
+
+//     function showPopup2() {
+  
+
+
+
+//   const overlay = document.getElementById("modal-overlay2");
+//   const guestsSelect = document.getElementById("yes");
+//   console.log(guestsSelect)
+//   const popup = document.getElementById("popup2");
+
+//   if (guestsSelect.value === "yes") {
+//     overlay.style.display = "block";
+//     popup.style.display = "block";
+//   } else {
+//     overlay.style.display = "none";
+//     popup.style.display = "none";
+//   }
+// }
+
+// function hidePopup2() {
+//   const overlay = document.getElementById("modal-overlay2");
+//   const popup = document.getElementById("popup2");
+
+//   overlay.style.display = "none";
+//   popup.style.display = "none";
+// }
+
+
+const yesRadio = document.getElementById("yes");
+  const noRadio = document.getElementById("no");
+  const guestsInput = document.getElementById("guestsInput");
+  const sorryMessage = document.getElementById("sorryMessage");
+
+  yesRadio.addEventListener("change", () => {
+    if (yesRadio.checked) {
+      guestsInput.style.display = "block";
+      sorryMessage.style.display = "none";
     }
+  });
 
-    function hidePopup() {
-      const overlay = document.getElementById("modal-overlay");
-      const popup = document.getElementById("popup");
-
-      overlay.style.display = "none";
-      popup.style.display = "none";
+  noRadio.addEventListener("change", () => {
+    if (noRadio.checked) {
+      guestsInput.style.display = "none";
+      sorryMessage.style.display = "block";
     }
+  });
 
 
   </script>
 
-
+<script is:inline src="//embed.typeform.com/next/embed.js"></script>
 
  
 </html>

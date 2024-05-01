@@ -1,11 +1,11 @@
 ---
 title: English
 iso: en
-fullName: Full name
+fullName: Name(s)
 phoneNumber: Phone number
-email: Email
+email: Email (Optional)
 diet: Dietary restrictions
-guests: Nr. of guests accompanying you
+guests: How many will you be attending?
 additionalInfo: Additional Information
 guestName: Guest Name(s)
 guestDiet: Dietary restrictions
